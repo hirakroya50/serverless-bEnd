@@ -1,7 +1,7 @@
 import { Hono } from "hono";
+import { authMiddleWare } from "./middlewares/auth";
 
 const app = new Hono();
-
 app.post("/", async (c) => {
   //db call
   // get req body , headers , query params , meddilewires
@@ -16,7 +16,7 @@ app.post("/", async (c) => {
     params: params,
   });
 });
-app.get("/", (c) => {
+app.get("/", authMiddleWare, (c) => {
   return c.text("Hello Hono!--------get");
 });
 app.delete("/", (c) => {
