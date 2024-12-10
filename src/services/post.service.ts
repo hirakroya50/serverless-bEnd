@@ -1,12 +1,12 @@
-import { CreatePostRequest, CreatePostResponse } from "../models/post.model";
+import { CreatePostRequest, UpdatePostRequest } from "../models/post.model";
 import { getPrisma } from "../prisma-connect/prismaFunction";
 import { Context } from "hono";
 import { createErrorResponse } from "../utils/response.util";
 
 export class PostService {
-  async createPost(c: Context) {
+  async createPost(c: Context): Promise<Response> {
     try {
-      const body = await c.req.json();
+      const body = (await c.req.json()) as CreatePostRequest;
       const prisma = getPrisma(c.env.DATABASE_URL);
       if (!body.postname) {
         return c.json(
@@ -61,7 +61,7 @@ export class PostService {
       );
     }
   }
-
+  //DELETE
   async deletePost(c: Context) {
     try {
       const prisma = getPrisma(c.env.DATABASE_URL);
@@ -109,7 +109,7 @@ export class PostService {
     try {
       const prisma = getPrisma(c.env.DATABASE_URL);
       const { id } = c.req.query();
-      const body = await c.req.json();
+      const body = (await c.req.json()) as UpdatePostRequest;
       if (!id) {
         return c.json(
           createErrorResponse(400, "Post ID is required to update a post."),
