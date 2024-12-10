@@ -2,10 +2,15 @@ name = "serverless-bend"
 main = "src/index.ts"
 compatibility_date = "2024-12-10"
 
+
+
 # compatibility_flags = [ "nodejs_compat" ]
 
 # [vars]
 # MY_VAR = "my-variable"
+[vars]
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMjQyYzRlNGUtM2ZhOS00Y2Q2LTkyZDktM2ZkYmE4N2Y5NDk1IiwidGVuYW50X2lkIjoiOTZmYTE4YWU2ZmZjYTgwMWVjOWYzNzJjZjZmNDNhMTBjMWMxYjJjNzlmNzc2MmVhYmE2YTYzNjliNWRhMDZiZCIsImludGVybmFsX3NlY3JldCI6IjYyNTRmZmY4LTQxOTktNDM3YS04NGQ3LWNiNWNlNDJhNzc3OSJ9.eDfEVWuEA17Vpdzo7-mezMdPSwS1nYxr2fcXGBxonxY"
+
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
@@ -26,3 +31,4 @@ compatibility_date = "2024-12-10"
 # [observability]
 # enabled = true
 # head_sampling_rate = 1
+
