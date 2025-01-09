@@ -25,7 +25,7 @@ export class PostService {
       });
 
       return c.json({
-        status: "form the service ",
+        status: 1,
         post,
       });
     } catch (error) {
