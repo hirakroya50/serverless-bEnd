@@ -12,7 +12,23 @@ const postService = new PostService();
 
 // CORS Middleware
 app.use("*", async (c, next) => {
-  c.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Allow only your Next.js app
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://d2yq29g6vw6zn5.cloudfront.net",
+  ];
+  const origin = c.req.header("Origin");
+
+  console.log({
+    origin,
+  });
+
+  if (origin && allowedOrigins.includes(origin)) {
+    c.header("Access-Control-Allow-Origin", origin);
+  } else {
+    c.header("Access-Control-Allow-Origin", "null");
+  }
+
   c.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   c.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
@@ -22,7 +38,6 @@ app.use("*", async (c, next) => {
 
   await next();
 });
-
 // Routes
 app.post("/", postService.createPost);
 app.get("/", postService.getPost);
