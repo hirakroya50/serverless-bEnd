@@ -15,6 +15,7 @@ app.use("*", async (c, next) => {
   const allowedOrigins = [
     "http://localhost:3000",
     "http://localhost:5173",
+    "http://localhost:5174",
     "https://d2yq29g6vw6zn5.cloudfront.net",
   ];
   const origin = c.req.header("Origin");
